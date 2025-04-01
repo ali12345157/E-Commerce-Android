@@ -5,6 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.POST
+import retrofit2.http.PUT
 
 data class SignUpRequest(
     val name: String,
@@ -49,6 +50,25 @@ data class ForgetPasswordResponse(
     val message:String
 )
 
+data class VerifyResetCodeRequest(
+    val resetCode: String
+)
+
+data class VerifyResetCodeResponse(
+    val status: String,
+
+)
+
+data class NewPassRequest(
+    val email:String,
+    val newPassword:String
+)
+
+data class NewPassResponse(
+
+    val statusMsg:String,
+    val message:String
+)
 
 
 interface AuthService {
@@ -61,7 +81,15 @@ fun signIn(@Body request: SignInRequest):Call<SignInResponse>
 
 @POST("auth/forgotPasswords")
 fun forget(@Body request:ForgetPassword):Call<ForgetPasswordResponse>
+
+@POST("auth/verifyResetCode")
+fun verifyResetCode(@Body request: VerifyResetCodeRequest): Call<VerifyResetCodeResponse>
+
+
+@PUT("auth/resetPassword")
+fun ResetPassword(@Body request:NewPassRequest):Call<NewPassResponse>
 }
+
 
 object RetrofitInstance {
     private const val BASE_URL = "https://ecommerce.routemisr.com/api/v1/"

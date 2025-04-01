@@ -43,6 +43,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation (libs.converter.gson)
     implementation (libs.androidx.lifecycle.runtime.ktx.v261)
+    implementation (libs.accompanist.systemuicontroller)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.logging.interceptor)

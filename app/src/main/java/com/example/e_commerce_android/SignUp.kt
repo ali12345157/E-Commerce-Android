@@ -6,8 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
@@ -15,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalConfiguration
-
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -36,7 +33,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -68,10 +64,9 @@ class SignUp:ComponentActivity() {
 @Composable
 
 fun UiSignUp(navController: NavController) {
-
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
-    val paddingValue = screenHeight * 0.10f // 5% من ارتفاع الشاشة
+    val paddingValue = screenHeight * 0.10f
 
     var password by remember { mutableStateOf("") }
     var rePassword by remember { mutableStateOf("") }
@@ -200,7 +195,7 @@ fun UiSignUp(navController: NavController) {
                 IconButton(onClick = { passwordVisible = !passwordVisible }) {
                     Icon(
                         painter = painterResource(
-                            id = if (passwordVisible) R.drawable.eye else R.drawable.eye
+                            id = if (passwordVisible) R.drawable.openeye else R.drawable.eye
                         ),
                         contentDescription = if (passwordVisible) "Hide Password" else "Show Password",
                         tint = Color.Gray,
@@ -238,7 +233,7 @@ fun UiSignUp(navController: NavController) {
                 IconButton(onClick = { confirmPasswordVisible = !confirmPasswordVisible }) {
                     Icon(
                         painter = painterResource(
-                            id = if (confirmPasswordVisible) R.drawable.eye else R.drawable.eye
+                            id = if (confirmPasswordVisible) R.drawable.openeye else R.drawable.eye
                         ),
                         contentDescription = if (confirmPasswordVisible) "Hide Password" else "Show Password",
                         tint = Color.Gray,
