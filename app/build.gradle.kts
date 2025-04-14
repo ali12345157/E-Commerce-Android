@@ -40,6 +40,17 @@ android {
 }
 
 dependencies {
+    implementation (libs.accompanist.pager)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.compose.v240)
+    implementation(libs.androidx.foundation)
+    implementation (libs.ktor.ktor.client.core)
+    implementation (libs.ktor.client.json)
+    implementation (libs.ktor.client.serialization)
+    implementation (libs.kotlinx.coroutines.core)
+    implementation (libs.accompanist.pager.indicators)
+    implementation (libs.androidx.material)
+    implementation (libs.androidx.navigation.compose.v253)
     implementation(libs.retrofit)
     implementation (libs.converter.gson)
     implementation (libs.androidx.lifecycle.runtime.ktx.v261)
@@ -54,6 +65,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.firebase.crashlytics.buildtools)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

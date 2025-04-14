@@ -1,9 +1,9 @@
 package com.example.e_commerce_android
-
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
 
@@ -69,27 +69,51 @@ data class NewPassResponse(
     val statusMsg:String,
     val message:String
 )
+data class ResponseCategories(
+    val metadata: Metadata? = null,
+    val data: List<DataItem?>? = null,
+    val results: Int? = null
+)
+
+data class DataItem(
+    val image: String? = null,
+    val createdAt: String? = null,
+    val name: String? = null,
+    val id: String? = null,
+    val slug: String? = null,
+    val updatedAt: String? = null
+)
+
+data class Metadata(
+    val numberOfPages: Int? = null,
+    val limit: Int? = null,
+    val currentPage: Int? = null
+)
 
 
 interface AuthService {
 
-@POST("auth/signup")
-fun signUp(@Body request: SignUpRequest):Call<SignUpResponse>
+    @POST("auth/signup")
+    fun signUp(@Body request: SignUpRequest): Call<SignUpResponse>
 
-@POST("auth/signin")
-fun signIn(@Body request: SignInRequest):Call<SignInResponse>
+    @POST("auth/signin")
+    fun signIn(@Body request: SignInRequest): Call<SignInResponse>
 
-@POST("auth/forgotPasswords")
-fun forget(@Body request:ForgetPassword):Call<ForgetPasswordResponse>
+    @POST("auth/forgotPasswords")
+    fun forget(@Body request: ForgetPassword): Call<ForgetPasswordResponse>
 
-@POST("auth/verifyResetCode")
-fun verifyResetCode(@Body request: VerifyResetCodeRequest): Call<VerifyResetCodeResponse>
+    @POST("auth/verifyResetCode")
+    fun verifyResetCode(@Body request: VerifyResetCodeRequest): Call<VerifyResetCodeResponse>
 
 
-@PUT("auth/resetPassword")
-fun ResetPassword(@Body request:NewPassRequest):Call<NewPassResponse>
+    @PUT("auth/resetPassword")
+    fun ResetPassword(@Body request: NewPassRequest): Call<NewPassResponse>
+
+    @GET("categories")
+    fun GetCategories(): Call<ResponseCategories>
+
+
 }
-
 
 object RetrofitInstance {
     private const val BASE_URL = "https://ecommerce.routemisr.com/api/v1/"
